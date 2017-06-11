@@ -5,13 +5,20 @@ from alphanum_exception import AlphanumValidationError
 class AlphaNum():
     def __init__(self, locale_code = ''):
         self.locale_code = locale_code
+        self.fr_alphabet = None
         if self.locale_code == '':
             self.locale_code = 'en-us'
         print('I am some constructor behavior and the language I am supporting is: ' + self.locale_code)
 
     def get_french_chars(self):
         ## read up on unicode, https://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin
-        chrs = ['\u00E7','\u00E8','\u00E9','\u00EA','\u00EE','\u00EF','\u00F4','\u0153','\u00FA','\u00FB','\u00FC']
+        chrs = [['\u00E0','\u00E1','\u00E4'],
+    ['\u00E7'],
+    ['\u00E8','\u00E9','\u00EA'],
+    ['\u00EE', '\u00EF'],
+    ['\u00F4', '\u0153'],
+    ['\u00F9', '\u00FC'],
+    ['\u00FF']]
         return chrs
 
     def get_char(self, position):
@@ -32,14 +39,17 @@ class AlphaNum():
         return self.locale_code
 
     def get_french_alphabet(self):
-        fr_alphabet = list(string.ascii_lowercase)
-        fr_alphabet[1:1] = ['\u00E0','\u00E1','\u00E4']
-        fr_alphabet[6:6]= ['\u00E7']
-        fr_alphabet[9:9] = ['\u00E8','\u00E9','\u00EA']
-        fr_alphabet[15:15] = ['\u00EE', '\u00EF']
-        fr_alphabet[24:24] = ['\u00F4', '\u0153']
-        fr_alphabet[32:32] = ['\u00F9', '\u00FC']
-        fr_alphabet[38:38] = ['\u00FF']
+        if self.fr_alphabet == None:
+            fr_alphabet = list(string.ascii_lowercase)
+            poss = [1,6,9,15,24,32,38]
+            chrs = self.get_french_chars()
+            for x in poss:
+                pos = x
+                car = chrs.pop(0)
+                while len(car) != 0:
+                    carr = car.pop(len(car)-1)
+                    fr_alphabet.insert(pos, carr)
+        self.fr_alphabet = fr_alphabet
         return fr_alphabet
 
     def get_german_alphabet(self):
