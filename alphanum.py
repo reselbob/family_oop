@@ -12,13 +12,7 @@ class AlphaNum():
 
     def get_french_chars(self):
         ## read up on unicode, https://en.wikipedia.org/wiki/List_of_Unicode_characters#Basic_Latin
-        chrs = [['\u00E0','\u00E1','\u00E4'],
-    ['\u00E7'],
-    ['\u00E8','\u00E9','\u00EA'],
-    ['\u00EE', '\u00EF'],
-    ['\u00F4', '\u0153'],
-    ['\u00F9', '\u00FC'],
-    ['\u00FF']]
+        chrs = [['\u00E0','\u00E1','\u00E4'], ['\u00E7'], ['\u00E8','\u00E9','\u00EA'], ['\u00EE', '\u00EF'], ['\u00F4', '\u0153'], ['\u00F9', '\u00FC'], ['\u00FF']]
         return chrs
 
     def get_char(self, position):
