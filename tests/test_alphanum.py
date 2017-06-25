@@ -35,3 +35,9 @@ class TestAlphanum(TestCase):
         fr = an.get_french_alphabet()
         self.assertIsNotNone(fr)
         self.assertEqual(an.get_locale(), 'fr-fr')
+        
+    def test_get_french_language(self):
+        an = AlphaNum('fr-fr')
+        fr = an.get_french_alphabet()
+        fra = ['a', 'à', 'á', 'ä', 'b', 'c', 'ç', 'd', 'e', 'è', 'é', 'ê', 'f', 'g', 'h', 'î', 'ï', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ô', 'œ', 'p', 'q', 'r', 's', 't', 'u', 'ù', 'ü', 'v', 'w', 'x', 'y', 'ÿ', 'z']
+        self.assertEqual(fr,fra)
